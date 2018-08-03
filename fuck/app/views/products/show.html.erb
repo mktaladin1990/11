@@ -1,0 +1,15 @@
+
+<h1><center>Trang Chi Tiet San Pham</center></h1>
+    <div  id="<%=@product.id%>" class:"prod" style="background-color:gray;width: 300px; margin: 0 auto; height: 450px; padding:10px">
+            <img width=100% style=" height:250px; display: block; " class="" src="<%= @product.image %>" alt=""
+            >
+            <p style="color:red; "  ><%= @product.name %> </p>
+            <p><strong>Giá:</Strong> <%= @product.price %></p>
+            <p><strong >Chi Tiết Sản Phẩm:<br/></strong>
+                <% if @product.description.present? %>
+                        <%= @product.description.html_safe %>
+                <% end %>
+                <%#= @product.description.html_safe if @product.description%>
+                <%#= @product.description.present? ? @product.description.html_safe : "" %>
+                <%#= @product.description.try(:html_safe)%>
+            </p>

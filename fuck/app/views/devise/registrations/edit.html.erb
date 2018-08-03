@@ -1,0 +1,79 @@
+<div class="container">
+  <h1>Edit Profile Devise</h1>
+  <hr>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-3">
+      <div class="text-center">
+        <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+        <h6>Upload a different photo...</h6>
+
+        <input type="file" class="form-control">
+      </div>
+    </div>
+
+    <!-- edit form column -->
+    <div class="col-md-9 personal-info">
+
+      <h3>Personal info</h3>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal",method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :email , class: "col-md-3 control-label" %>
+        <div class="col-md-6">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :name , class: "col-md-3 control-label" %>
+        <div class="col-md-6">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" ,class: "form-control" %>
+        </div>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for:
+          <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :new_password , class: "col-md-3 control-label" , placeholder: "Enter password " %>
+        <div class="col-md-6">
+          <%= f.password_field :password, autocomplete: "off" ,class: "form-control"%>
+          <% if @minimum_password_length %>
+            <br/>
+            <em><%= @minimum_password_length %>
+              characters minimum</em>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "col-md-3 control-label" %>
+        <div class="col-md-6">
+          <%= f.password_field :password_confirmation, placeholder: "Enter password confirmation", autocomplete: "off" ,class: "form-control"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password , class: "col-md-3 control-label" %>
+
+        <div class="col-md-6">
+          <%= f.password_field :current_password, autocomplete: "off" ,class: "form-control", placeholder: "Enter current password "  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-offset-5">
+          <%= f.submit "Update", class: "btn btn-success" %>
+          <%= link_to "Back", :back %>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
+</div>
+<hr>

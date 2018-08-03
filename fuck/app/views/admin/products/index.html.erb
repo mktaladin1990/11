@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      .text-bar{
+         font-weight: bold;
+
+
+      }
+      .list{
+      background: rgb(5,108,180);
+      padding:10px;
+        margin: 10px;
+      margin-left:  80px;
+      margin-right: 80px;
+
+      color:white;
+      font-weight:bold;
+      border-radius: 6px;
+
+
+        }
+
+      .list:hover a{color:yellow;}
+
+
+      .list a {
+          color:white;display:block;
+      }
+      .profile-userpic img {
+        float: none;
+        margin: 0 auto;
+        width: 50%;
+        height: 50%;
+        -webkit-border-radius: 50% !important;
+        -moz-border-radius: 50% !important;
+        border-radius: 50% !important;
+      }
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {
+        height: 450px;
+      }
+
+      /* Set gray background color and 100% height */
+      .sidenav {
+        padding-top: 20px;
+        background-color: #f1f1f1;
+        height: 100%;
+      }
+
+      /* Set black background color, white text and some padding */
+      footer {
+        background-color: #555;
+        color: white;
+        padding: 15px;
+      }
+
+      /* On small screens, set height to 'auto' for sidenav and grid */
+      @media screen and (max-width: 767px) {
+        .sidenav {
+          height: auto;
+          padding: 15px;
+        }
+        .row.content {
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body >
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Mike.com.vn</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <!-- <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right"; style=" margin: 5px  ">
+            <li>
+                <%=link_to 'Sign Out' , destroy_user_session_path, :class => " btn-danger bt1 ", method: :delete, data: { confirm: 'Are you sure you want to logout ?' } %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid text-center" style="  background-color: #f1f1f1; min-height: 900px;">
+      <div class="row content">
+        <div class="col-sm-3 sidenav">
+          <div class="panel-heading">Menu</div>
+          <div class="panel-body">
+            <div class="list">
+              <a href="/">Home</a>
+            </div>
+
+            <div class="list">
+              <a href="http://facebook.com/nguyenvanquang2708">Liên hệ</a>
+            </div>
+
+
+            <div class="list">
+              <a href="#">Bình luận sản phẩm</a>
+            </div>
+
+            <div class="list">
+              <a href="#">Danh mục Bài viết</a>
+            </div>
+            <div class="list">
+              <a href="#">Bài viết</a>
+            </div>
+
+            <div class="list">
+              <a href="#">Tình Trạng</a>
+            </div>
+
+            <div class="list">
+              <a href="#">Đơn Hàng</a>
+            </div>
+            <div class="list">
+              <a href="#">Doanh Thu</a>
+            </div>
+
+
+
+          </div>
+        </div>
+
+
+      <div class="col-sm-6 text-left" style="  background-color: white;min-height: 800px;  ">
+        <center><h1>Welcome Admin Site</h1></center>
+        <div class="col-sm-6">
+          <h3 style="padding:0px;margin:0px !important; width: 300px ;margin-left: 5px"><%=link_to 'Thêm Sản Phẩm', new_product_path(p), :class => "btn btn-info"%></h3>
+        </div>
+        <div class="dropdown" style="margin-left:740px;">
+
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Danh Mục Sản Phẩm
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <% @categories.each do |c| %>
+            <li><a href="/admin/products/?categories=<%=c.id%>"><%=c.name%></a></li>
+            <%end%>
+          </ul>
+        </div>
+        <hr>
+        <div  style="background-color:white; height:25px;margin:7px;">
+          <div class="col-sm-4 text-bar" style="padding:5px;"><center><p>HÌNH ẢNH</p></center></div>
+          <div class="col-sm-3 text-bar" style="padding:5px;"><center><p>CHI TIÊT</p></center></div>
+          <div class="col-sm-2 text-bar" style="padding:5px;"><center><p>DANH MỤC</p></center></div>
+          <div class="col-sm-3 text-bar" style="padding:5px;"><center><p>QUẢN LÝ</p></center></div>
+        </div>
+        <hr>
+
+        <% @products.each do |p| %>
+          <div>
+            <div style="background-color:#f4f4f4;  padding: 10px;  height: 220px; margin:7px ; border-color: gray;">
+              <div class="col-sm-4" style="padding:0px; border: 3px solid #f4f4f4;">
+              <img width="100%"  style=" height:195px; display: block; " src="<%= p.image %>" alt="">
+              </div>
+              <div class="col-sm-3"  style="background-color: white; height: 100%  ; margin: 0px;  padding:20px; border: 3px solid #f4f4f4; ">
+              <p>
+                <%a= p.name %>
+                  <strong>
+                    <%if a.length > 600%>
+                      <%= a[0,60]+"..."%>
+                    <%else%>
+                      <%= a%>
+                    <% end  %>
+                  </strong>
+                </p>
+                <p>
+                  <strong style="color: red">Giá:</strong>
+                  <%= number_to_currency((p.price), unit: "VND", format: "%n %u")%></p>
+                  </div>
+                    <div class="col-sm-2" style="background-color: white; height: 100% ; padding:20px;border: 3px solid #f4f4f4;">
+                    <% v = p.categories %>
+                    <% v.each do |o| %>
+                    <%= o.name %>
+                    <% end %>
+                  </div>
+                  <div class="col-sm-3 " style="background-color: white;padding:11px; height: 100% ;border: 1px solid #f4f4f4;">
+                <div class="nav navbar-nav navbar;" style:"padding-bottom: 10px"="style:"padding-bottom: 10px"">
+
+                  <li style="margin: 0px;">
+
+                    <h3 style="padding:0px;margin:0px; margin-left: 2px"><%=link_to 'Edit', edit_product_path(p), :class => "btn btn-warning"%></h3>
+                  </li>
+
+                  <li style="margin: 0px;">
+                    <h3 style="padding:0px;margin:0px; margin-left: 1px"><%=link_to 'Show', product_path(p), :class => "btn btn-success"%></h3>
+                  </li>
+                  <li style="margin: 0px;">
+                    <h3 style="padding:0px;margin:0px; margin-left: 1px"><%=link_to 'Delete' , product_path(p), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></h3>
+                  </li>
+                </div>
+</div>
+
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+        <div class="col-sm-3  sidenav">
+          <div class="profile-sidebar">
+            <!-- SIDEBAR USERPIC -->
+            <div class="profile-userpic">
+              <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-responsive" alt="">
+            </div>
+            <!-- END SIDEBAR USERPIC -->
+            <!-- SIDEBAR USER TITLE -->
+            <div class="profile-usertitle">
+              <div class="profile-usertitle-name">
+                Name:   <%= @user.email %>
+              </div>
+              <div class="profile-usertitle-job">
+                Chức Vụ : <%= @user.role%>
+              </div>
+            </div>
+            <!-- END SIDEBAR USER TITLE -->
+            <!-- SIDEBAR BUTTONS -->
+            <!-- <div class="profile-userbuttons">
+              <button type="button" class="btn btn-success btn-sm">Follow</button>
+              <button type="button" class="btn btn-danger btn-sm">Message</button>
+            </div> -->
+            <!-- END SIDEBAR BUTTONS -->
+            <!-- SIDEBAR MENU -->
+            <div class="profile-usermenu">
+              <ul class="nav">
+                <li class="active">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-home"></i>
+                    Overview
+                  </a>
+                </li>
+                <li>
+                    <%=link_to 'Account Settings' ,user_path(@user.id)  %>
+                  <!-- <a href="">
+                    <i class="glyphicon glyphicon-user"></i>
+                    Account Settings
+                  </a> -->
+                </li>
+                <li>
+                  <a href="<%=users_path%>" target="_blank">
+                    <i class="glyphicon glyphicon-ok"></i>
+                    Manager Users
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="glyphicon glyphicon-flag"></i>
+                    Help
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- END MENU -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="container-fluid text-center">
+      <p>Footer Text</p>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<style>
+  .zoom:hover {
+    transform: scale(1.01);
+    border: #ff0000 solid 2px;
+    border: #ff0000 solid 2px;
+  }
+</style>
+<div class="row like-table-row" style="background-color:   #f0f0f0">
+  <!-- <a class="bottom" href="<%=new_product_path%>"> Thêm Sản Phẩm </a> -->
+  <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <div class="navbar-header">
+      <strong>
+        <a class="navbar-brand" href="#">Mike.com.vn</a>
+      </strong>
+    </div>
+    <ul class="nav navbar-nav">
+      <li >
+        <a href="<%= root_path %>">Home</a>
+      </li>
+      <li>
+        <a href="#">Converse</a>
+      </li>
+      <li>
+        <a href="#">Vans</a>
+      </li>
+      <li>
+        <a href="#">Pladium</a>
+      </li>
+      <li>
+        <a href="#">Boots</a>
+      </li>
+    </ul>
+    <p style="float : right ;margin: 5px; padding: 5px">
+      <% if user_signed_in? == true %>
+        <div style="  width: 200px !important; float: right;">
+          <p style="color: white">
+            User :
+            <%= @user.email %></p>
+          <%=link_to 'My Profile' , edit_user_registration_path, :class => "btn btn-success "  %>
+          <%=link_to 'Sign Out' , destroy_user_session_path, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure you want to logout ?' } %>
+
+
+        </div>
+
+      <%else %>
+        <a href="/users/sign_in" class="btn btn-success btn-lg" style="margin-right: 5px ;padding: 4px  ">
+          <span class="glyphicon glyphicon-log-in"></span>
+          Sign in
+        </a>
+        <a href="/users/sign_up" class="btn btn-success btn-lg" style="margin-right: 5px ;padding: 4px  ">
+          <!-- <a data-method="delete" href="<%# logout_path %>" class="btn btn-info btn-lg" > -->
+          <span class="glyphicon glyphicon-log-out"></span>
+          Resigter
+        </a>
+      <%end%>
+
+    </p>
+  </nav>
+  <div class="col-md-2 " style="background-color: #f0f0f0; height: 100%">
+
+    <div class="categories " style="padding-top: 10% ; height: 100%; margin-left: 10px">
+      <h3 style=" margin-bottom: 10px; margin-left: 30px;">Category</h3>
+      <ul class="list-group" style="margin: 20px;">
+        <% @sl.each do |q| %>
+          <li class="list-group-item"><%=q[:name]%>
+            <span class="badge">
+              <%=q[:sl]%></span></li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+
+  <div class=" col-md-9   " style=" padding-top: 0px; background-color: white">
+    <div class="tittle" style="height: 80px;  ">
+
+      <div style="float: right; position:relative;">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="">Sắp Xếp Sản Phẩm
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu" style=" padding-right: -5px;">
+          <li>
+            <a href="/?sort_by=title-ascending">Theo Tên: Từ A đến Z</a>
+          </li>
+          <li>
+            <a href="/?sort_by=title-descending">Theo Tên: Từ Z đến A</a>
+          </li>
+          <li>
+            <a href="/?sort_by=price-ascending">Theo Giá: Thấp đến cao</a>
+          </li>
+          <li>
+            <a href="/?sort_by=price-descending">Theo Giá: Cao đến thấp</a>
+          </li>
+        </ul>
+      </div>
+      <h2>
+        <p style="float: left">All Products</p>
+      </h2>
+
+    </div>
+    <% @products.each do |p| %>
+      <div>
+        <a href="<%= product_path(p)%>">
+          <div class="prod zoom" style="background-color:#f4f4f4;width: 270px;  height: 320px; float: left ;margin:7px ; border-color: gray;">
+            <img width="100%" style=" height:200px; display: block; " src="<%= p.image %>" alt="">
+            <a href="<%= product_path(p)%>" class="fa fa-search btn btn-primary zoom "></a>
+            <a class="fa fa-cart-plus btn btn-primary" aria-hidden="true"></a>
+          </br>
+          <br>
+          <%a= p.name %>
+            <strong>
+              <%if a.length > 60%>
+                <%= a[0,60]+"..."%>
+              <%else%>
+                <%= a%>
+              <% end  %>
+            </strong>
+
+            <p>
+              <strong style="color: red">Giá:</strong>
+              <%= number_to_currency((p.price), unit: "VND", format: "%n %u")%></p>
+            <!-- <h3><%=link_to 'Edit', edit_product_path(p), :class => "btn btn-warning"%></h3> -->
+
+            <!-- <p> <strong >Chi Tiết Sản Phẩm:<br/></strong> <% if p.description.present? %> <%= p.description.html_safe %> <% end %> <br> <%#= p.description.html_safe if p.description%> <%#= p.description.present? ? p.description.html_safe : "" %> <%#=
+            p.description.try(:html_safe)%> </p> -->
+            <!-- <h3><%=link_to 'Show', product_path(p), :class => "btn btn-success"%></h3> <h3><%=link_to 'Delete' , product_path(p), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %> </h3> -->
+            <!-- <h3><%=link_to 'Delete' , product_path(p), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></h3> -->
+            <%# if policy(p).destroy? %>
+              <!-- <td><%#= link_to 'Destroy', p,method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+              <%# end %>
+              </a>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+
+    </div>

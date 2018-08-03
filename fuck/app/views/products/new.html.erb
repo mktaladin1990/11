@@ -1,0 +1,37 @@
+<style>
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+</style>
+
+<div style="background-color:powderblue;padding: 2em; margin: 0 auto ">
+  <%= form_with scope: :product, url: products_path, local: true do |form| %>
+  <h1>
+    <center>Tạo Data Sản Phẩm</center>
+  </h1>
+  <p class="form">
+    <%= form.label :NameProduct %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :Price %><br>
+    <%= form.text_field :price %>
+  </p>
+  <p>
+    <%= form.label :Description %><br>
+    <%= form.text_field :description %>
+  </p>
+  <p>
+    <%= form.label :Linkimage %><br>
+    <%= form.text_field :image %>
+  </p>
+
+  <input type="text" name="category_name">
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+</div>

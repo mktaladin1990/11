@@ -1,0 +1,78 @@
+
+
+.categories{
+  float: left;
+  padding : 10px;
+  width: 250px;
+
+}
+  .btn-success{
+      float: left;
+      margin: 5px;
+      padding: 5px;
+      width: 75px;
+ }
+  .btn-warning{
+      float: left;
+      margin: 5px;
+      padding: 5px;
+      width: 75px;
+ }
+  .btn-danger{
+      float: right;
+
+      padding: 5px;
+      width: 75px;
+      height: 50px;
+ }
+  .a1 {
+      float: left;
+      margin: 5px;
+      margin-bottom: 5px;
+      -webkit-appearance: button;
+      -moz-appearance: button;
+      appearance: button;
+      text-decoration: none;
+      padding: 10px;
+ }
+ .products{
+   margin-top: 10px;
+
+ }
+.list-unstyled{
+  width: 45px;
+  height: 45px;
+}
+
+  .prod {
+      padding: 1px;
+      float: left;
+      background-color:#f4f4f4;
+      width: 280px;
+      height: 305px;
+      float: left;
+      margin: 5px ;
+      border-color: gray;"
+
+ }
+  .zoom{
+ }
+  .zoom:hover {
+      transform: scale(1.01);
+      border: #ff0000 solid 2px;
+      border: #ff0000 solid 2px;
+ }
+
+ /* .row.like-table-row {
+    display: table-row;
+}
+
+.row > div {
+    display: table-cell;
+    vertical-align: middle;
+    border: 1px solid #000;
+    float:none;
+} */
+
+/* .like-table-row { display: table; width: 100%; }
+.like-table.row > [class*=col-] { display: table-cell; vertical-align: middle; border: 1px solid #000; float: none; } */
