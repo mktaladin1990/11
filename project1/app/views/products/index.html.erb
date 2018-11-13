@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'New Product', new_product_path, :class => "btn" %>
+<h1>Products</h1>
+
+<!-- Area for view Product -->
+
+<!-- End of area for view Product -->
+<br>
+
+<!-- Add new Product -->
+<% @cate.each do |cate| %>
+  <p><%= cate.name %></p>
+  <% cate.products.each do |product| %>
+    <div class="product-card">
+      <%= link_to image_tag(product.image), product%>
+      <h4 class="title"><%= product.name%></h4>
+    </div>
+  <% end %>
+<% end %>

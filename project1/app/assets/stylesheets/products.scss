@@ -1,0 +1,63 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* CSS for same element */
+a.btn {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #333;
+  color: #333;
+  transition: 0.3s;
+  width: 80px;
+  text-align: center;
+  text-decoration: none;
+}
+a.btn:hover {
+  border: none;
+  color: #fff;
+  background-color: #333;
+  transition: 0.3s;
+}
+/* CSS for Product List */
+.product-card {
+  float: left;
+  width: 33.333%;
+  text-align: center;
+}
+.product-card img {
+  display: block;
+  margin:0 auto;
+  width: 200px;
+  height: 200px;
+}
+// .product-card::after {
+//     display: block;
+//     clear: both;
+//     content: "";
+// }
+.title {
+  color: #ff0000;
+}
+.clear-fix {
+  content: "";
+  clear: both;
+  display: block;
+}
+/* End CSS for Product List */
+
+/* CSS for Show Product */
+.product-img {
+  float: left;
+  width: 40%;
+  text-align: center;
+}
+.product-img img {
+  width: 300px;
+  height: 300px;
+}
+.product-info {
+  float: left;
+  width: 60%;
+}
+/* End CSS for Show Product */

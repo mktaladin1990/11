@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @product.image %>
+</p> -->
+
+
+<div class="show-product">
+  <div class="product-img">
+    <%= image_tag(@product.image) %>
+  </div>
+  <div class="product-info">
+    <h2 class="name"><%=@product.name%></h2>
+    <p class="description"><%=@product.description%></p>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_product_path(@product), :class => "btn"%> |
+<%= link_to 'Back', products_path, :class => "btn" %>

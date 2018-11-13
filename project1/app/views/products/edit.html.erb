@@ -1,0 +1,7 @@
+<h1>Editing Product</h1>
+
+<%= render 'form', product: @product %>
+
+<%= link_to 'Show', @product, :class =>"btn" %> |
+<%= link_to 'Back', products_path, :class =>"btn"  %>
+<%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"btn" %>
